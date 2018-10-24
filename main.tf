@@ -16,7 +16,7 @@ resource "aws_instance" "nycOpenData" {
 
     connection {
       type        = "ssh"
-      user        = "ubuntu"
+      user        = "ec2-user"
       private_key = "${file("~/.aws/rdm-ssh.pem")}"
       }
   }
@@ -29,7 +29,7 @@ resource "aws_instance" "nycOpenData" {
 
     connection {
       type        = "ssh"
-      user        = "ubuntu"
+      user        = "ec2-user"
       private_key = "${file("~/.aws/rdm-ssh.pem")}"
     }
   }
