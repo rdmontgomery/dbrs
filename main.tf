@@ -6,7 +6,7 @@ provider "aws" {
 
 resource "aws_instance" "nycOpenData" {
   ami           = "ami-07eb698ce660402d2"
-  instance_type = "t2.micro"
+  instance_type = "m5.large"
   key_name = "rdm-ssh"
   vpc_security_group_ids = ["${aws_security_group.jupyter_notebook_sg.id}"]
 
