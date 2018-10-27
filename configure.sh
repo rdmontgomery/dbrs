@@ -1,11 +1,13 @@
 #!/bin/bash
 
-sudo yum update
+sudo yum -y update
 sudo yum -y install git
-sudo yum -y install vim
-sudo yum -y install python3 python3-pip python3-dev
-sudo -H pip3 install jupyter
 
-mkdir ~/.jupyter
-echo "c.NotebookApp.allow_origin = '*' c.NotebookApp.ip = '0.0.0.0'" | sudo tee /home/ubuntu/.jupyter/jupyter_notebook_config.py
+# Grab source code from Github
+git clone https://github.com/rdmontgomery/nycOpenData.git
+cd nycOpenData
+
+# Run dockerized jupyter notebook with a specified token
+# and volume connected to current directory
+docker run -d --name jupyter --rm -v /$PWD:/home/jovyan/work/ -p 8888:8888 jupyter/datascience-notebook start-notebook.sh --NotebookApp.token="transvertercorrelativenessechoismssinfoniettas"
 
